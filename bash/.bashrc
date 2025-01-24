@@ -86,6 +86,31 @@ fi
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
+bgtask() {
+  local log_file="nohup.log"
+  local command=""
+
+  # Parse flags
+  while [[ $# -gt 0 ]]; do
+    case "$1" in
+    -l | --log)
+      log_file="$2"
+      shift 2
+      ;;
+    *)
+      command+=" $1"
+      shift
+      ;;
+    esac
+  done
+  # Ensure log directory exists
+  mkdir -p "$(dirname "$log_file")"
+  # Log the command and timestamp
+  echo "[$(date '+%Y-%m-%d %H:%M:%S')] $*" >>"$log_file"
+  echo -e $command
+  nohup $command >"$log_file" 2>&1 &
+}
+
 # some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
