@@ -107,7 +107,7 @@ bgtask() {
   mkdir -p "$(dirname "$log_file")"
   # Log the command and timestamp
   echo "[$(date '+%Y-%m-%d %H:%M:%S')] $*" >>"$log_file"
-  echo -e $command
+  echo -e $command $log_file
   nohup $command >"$log_file" 2>&1 &
 }
 
@@ -168,4 +168,7 @@ export PATH="$PATH:/opt/nvim-linux64/bin"
 
 # Created by `pipx` on 2024-11-24 06:45:07
 export PATH="$PATH:/home/kugelblitz/.local/bin"
-neofetch --ascii_distro Debian --disable resolution wm icons gpu --cpu_temp C
+neofetch --ascii_distro Debian --disable resolution wm icons gpu packages --cpu_temp C
+killall conky
+sleep 2s
+conky -c ~/.config/conky/Mimosa.conf &>/dev/null &
