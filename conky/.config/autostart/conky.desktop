@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 Name=Conky
-Exec=~/.config/conky/start.sh
+Exec=/home/kugelblitz/.config/conky/start.sh
 Hidden=false
 NoDisplay=false
 X-GNOME-Autostart-enabled=true
