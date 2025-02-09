@@ -118,6 +118,7 @@ alias l='ls -CF'
 alias ct='eza --tree --color=always --icons=always --level=3'
 alias cat='batcat --theme=Dracula --color=always'
 alias t2c='tmux save-buffer - | xclip -selection clipboard'
+alias cdoc='mkdir docs && ln -s $(pwd)/docs ~/Documents/Notes/$(basename $(pwd))'
 
 # Customize fzf options
 export FZF_DEFAULT_OPTS="--height 80% --layout reverse --border rounded"
