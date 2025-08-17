@@ -117,8 +117,14 @@ alias la='ls -A'
 alias l='ls -CF'
 alias ct='eza --tree --color=always --icons=always --level=3'
 alias cat='batcat --theme=Dracula --color=always'
-alias t2c='tmux save-buffer - | xclip -selection clipboard'
 alias cdoc='mkdir docs && ln -s $(pwd)/docs ~/Documents/Notes/$(basename $(pwd))'
+is_wsl() {
+  grep -qi microsoft /proc/version 2>/dev/null
+}
+
+if is_wsl; then
+  alias wc='cd /mnt/c/Users/'
+fi
 
 # Customize fzf options
 export FZF_DEFAULT_OPTS="--height 80% --layout reverse --border rounded"
@@ -126,13 +132,13 @@ export FZF_CTRL_T_OPTS=$FZF_DEFAULT_OPTS' --preview="batcat --theme=Dracula --co
 export FZF_ALT_C_OPTS=$FZF_DEFAULT_OPTS' --preview="eza --tree --color=always --icons=always --level=3 {}"'
 
 # Use fd instead of find for faster searches (if fd is installed)
-export fzfCMD='fdfind --no-ignore --exclude "node_modules" --exclude __pycache__'
+export fzfCMD='fdfind'
 export FZF_DEFAULT_COMMAND='$fzfCMD --type f'
 export FZF_CTRL_T_COMMAND='$fzfCMD --type f'
 export FZF_ALT_C_COMMAND='$fzfCMD --type d'
 
-alias fd='fdfind --type d --no-ignore --exclude "node_modules" --exclude __pycache__'
-alias ff='fdfind --type f --no-ignore --exclude "node_modules" --exclude __pycache__'
+alias fd='fdfind --type d'
+alias ff='fdfind --type f'
 alias fcd='cd $(fd | fzf --preview="eza --tree --color=always --icons=always --level=3")'
 alias fcode='code $(ff | fzf --preview="batcat --theme=Dracula --color=always {}")'
 alias fvim='nvim $(ff | fzf --preview="batcat --theme=Dracula --color=always {}")'
