@@ -73,9 +73,7 @@ alias c='clear'
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-alias wc='cd /mnt/c/Users/vighn'
-alias wd='cd /mnt/d'
-alias onedrive='cd /mnt/c/Users/vighn/OneDrive\ -\ Indian\ Institute\ of\ Technology\ Bombay/IITB'
+alias wc='cd /mnt/c/Users/'
 alias ct='eza --tree --color=always --icons=always --level=3 --git-ignore --git'
 alias cat="batcat --theme Dracula --color always"
 alias ovpn="sudo openvpn --config IITBADV.ovpn > /dev/null"
