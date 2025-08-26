@@ -1,10 +1,3 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 # Set the directory we want to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
@@ -17,8 +10,7 @@ fi
 # Source/Load zinit
 source "${ZINIT_HOME}/zinit.zsh"
 
-# Add in Powerlevel10k
-zinit ice depth=1; zinit light romkatv/powerlevel10k
+eval "$(oh-my-posh init zsh --config ~/.config/omp/zen.toml)"
 
 # Add in zsh plugins
 zinit light zsh-users/zsh-syntax-highlighting
@@ -39,14 +31,12 @@ zinit snippet OMZP::command-not-found
 # Load completions
 ZSH_DISABLE_COMPFIX=true
 autoload -Uz compinit && compinit
-
 zinit cdreplay -q
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# Load fzf if available
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export PATH="$PATH:/opt/nvim-linux64/bin"
 
+export PATH="$PATH:/opt/nvim-linux64/bin"
 
 # History
 HISTSIZE=10000
@@ -66,9 +56,11 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+
+# History search with cursor at end
 autoload -U history-search-end
 zle -N history-beginning-search-backward-end history-search-end
-zle -N history-beginning-search-forward-end  history-search-end
+zle -N history-beginning-search-forward-end history-search-end
 bindkey '^[OA' history-beginning-search-backward-end
 bindkey '^[OB' history-beginning-search-forward-end
 
@@ -91,7 +83,7 @@ export FZF_ALT_C_OPTS=$FZF_DEFAULT_OPTS' --preview="eza --tree --color=always --
 export FZF_CTRL_R_OPTS=$FZF_DEFAULT_OPTS' --sort --exact'
 export FZF_COMPLETION_OPTS=$FZF_DEFAULT_OPTS
 
-# Use fd instead of find for faster searches (if fd is installed)
+# Use fd instead of find for faster searches
 export fzfCMD='fdfind'
 export FZF_DEFAULT_COMMAND='$fzfCMD --type f'
 export FZF_CTRL_T_COMMAND='$fzfCMD --type f'
