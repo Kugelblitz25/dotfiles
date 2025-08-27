@@ -10,6 +10,7 @@ fi
 # Source/Load zinit
 source "${ZINIT_HOME}/zinit.zsh"
 
+. "$HOME/.local/bin/env"
 eval "$(oh-my-posh init zsh --config ~/.config/omp/zen.toml)"
 
 # Add in zsh plugins
@@ -94,4 +95,3 @@ alias ff='fdfind --type f'
 alias fcd='cd $(fd | fzf --preview="eza --tree --color=always --icons=always --level=3 {}")'
 alias fvim='nvim $(ff | fzf --preview="batcat --theme Dracula --color always {}")'
 
-. "$HOME/.local/bin/env"
