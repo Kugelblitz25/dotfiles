@@ -22,10 +22,18 @@
 
 /* Show sidebar on hover */
 #sidebar-main:hover {
-  width: 20vw !important;     /* Adjust to preferred width */
+  width: 20vw !important;     
   min-width: 20vw !important;
   max-width: 75vw !important;
 }
+
+#vertical-tabs{
+  width: 20vw !important;     
+  min-width: 20vw !important;
+  max-width: 75vw !important; 
+}
+
+
 #browser {
   padding: var(--content-padding);
   backdrop-filter: blur(1rem);

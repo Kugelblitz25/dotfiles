@@ -10,7 +10,6 @@ fi
 # Source/Load zinit
 source "${ZINIT_HOME}/zinit.zsh"
 
-. "$HOME/.local/bin/env"
 eval "$(oh-my-posh init zsh --config ~/.config/omp/zen.toml)"
 
 # Add in zsh plugins
@@ -37,7 +36,7 @@ zinit cdreplay -q
 # Load fzf if available
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export PATH="$PATH:/opt/nvim-linux64/bin"
+export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 
 # History
 HISTSIZE=10000
