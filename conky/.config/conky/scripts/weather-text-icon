@@ -1,43 +1,38 @@
 #!/bin/bash
+# weather-text-icon for JetBrainsMono Nerd Font
+# maps OpenWeatherMap icon codes → Nerd Font Weather glyphs
 
-# v2.0
-# I create this scripts to show weather icon with text icon
-# and take data from json file, so it can use offline
-# the font i use Feather icon font  { https://github.com/AT-UI/feather-font }
-# to get weather.json file i use another script
-# Closebox73
+# Nerd Font weather symbols
+ICON_01D=""   # clear day
+ICON_01N=""   # clear night
+ICON_02=""   # few clouds / scattered
+ICON_09=""   # shower rain
+ICON_10=""   # rain
+ICON_11=""   # thunderstorm
+ICON_13=""   # snow
+ICON_50=""   # mist/fog
+NO_DATA=""   # default
 
-# icon font based openweathermap.org data
-ICON_01D=""
-ICON_01N=""
-ICON_02=""
-ICON_09=""
-ICON_10=""
-ICON_11=""
-ICON_13=""
-ICON_50=""
-NO_DATA=""
+WEATHER_ICON=$(jq -r '.weather[0].icon' ~/.cache/weather.json)
 
-WEATHER_ICON=$(cat ~/.cache/weather.json | jq -r '.weather[0].icon')
-
-if [[ "${WEATHER_ICON}" = *01d* ]]; then
+if [[ "${WEATHER_ICON}" == "01d" ]]; then
     echo "${ICON_01D}"
-elif [[ "${WEATHER_ICON}" = *01n* ]]; then
+elif [[ "${WEATHER_ICON}" == "01n" ]]; then
     echo "${ICON_01N}"
-elif [[ "${WEATHER_ICON}" = *02d* || "${WEATHER_ICON}" = *02n* || "${WEATHER_ICON}" = *03d* || "${WEATHER_ICON}" = *03n* || "${WEATHER_ICON}" = *04d* || "${WEATHER_ICON}" = *04n* ]]; then
+elif [[ "${WEATHER_ICON}" =~ 02.* || "${WEATHER_ICON}" =~ 03.* || "${WEATHER_ICON}" =~ 04.* ]]; then
     echo "${ICON_02}"
-elif [[ "${WEATHER_ICON}" = *09d* || "${WEATHER_ICON}" = *09n* ]]; then
+elif [[ "${WEATHER_ICON}" =~ 09.* ]]; then
     echo "${ICON_09}"
-elif [[ "${WEATHER_ICON}" = *10d* || "${WEATHER_ICON}" = *10n* ]]; then
+elif [[ "${WEATHER_ICON}" =~ 10.* ]]; then
     echo "${ICON_10}"
-elif [[ "${WEATHER_ICON}" = *11d* || "${WEATHER_ICON}" = *11n* ]]; then
+elif [[ "${WEATHER_ICON}" =~ 11.* ]]; then
     echo "${ICON_11}"
-elif [[ "${WEATHER_ICON}" = *13d* || "${WEATHER_ICON}" = *13n* ]]; then
+elif [[ "${WEATHER_ICON}" =~ 13.* ]]; then
     echo "${ICON_13}"
-elif [[ "${WEATHER_ICON}" = *50d* || "${WEATHER_ICON}" = *50n* ]]; then
+elif [[ "${WEATHER_ICON}" =~ 50.* ]]; then
     echo "${ICON_50}"
 else
-	echo "${NO_DATA}"
+    echo "${NO_DATA}"
 fi
 
-exit
+exit 0

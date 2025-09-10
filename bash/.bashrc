@@ -144,7 +144,6 @@ alias fcode='code $(ff | fzf --preview="batcat --theme=Dracula --color=always {}
 alias fvim='nvim $(ff | fzf --preview="batcat --theme=Dracula --color=always {}")'
 
 eval "$(starship init bash)"
-eval "$(thefuck --alias tf)"
 source /usr/share/doc/fzf/examples/key-bindings.bash
 
 # Add an "alert" alias for long running commands.  Use like so:
