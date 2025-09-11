@@ -34,12 +34,30 @@
 }
 
 
-#browser {
-  padding: var(--content-padding);
-  backdrop-filter: blur(1rem);
-  background-color: var(--toolbar-bgcolor) !important
-}
 #nav-bar {
-  border: 1px solid rgba(255, 255, 255, 0.3) !important;
-  border-radius: 1em 1em 0 0 !important;
+  border-radius: 1rem 1rem 0 0 !important;
+}
+
+body{
+  border-radius: 1rem !important;
+  overflow: hidden;
+}
+
+#urlbar,
+#urlbar-background{
+  border-radius: 2rem !important;
+  overflow: hidden !important;
+  --urlbar-width: 60rem !important;
+}
+
+#urlbar-container{
+  justify-content: center !important;
+}
+
+.urlbar-input{
+  text-align: center !important;
+}
+
+#identity-box{
+  display: none !important;
 }
