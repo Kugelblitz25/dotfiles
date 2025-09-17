@@ -20,6 +20,10 @@
   }
 }
 
+.wrapper{
+  width: inherit !important;
+}
+
 /* Show sidebar on hover */
 #sidebar-main:hover {
   width: 20vw !important;     
@@ -40,14 +44,14 @@
 
 body{
   border-radius: 1rem !important;
-  overflow: hidden;
 }
 
 #urlbar,
-#urlbar-background{
-  border-radius: 2rem !important;
+#urlbar-background,
+.urlbar-input-container{
+  border-radius: calc(var(--urlbar-container-height) / 2) !important;
   overflow: hidden !important;
-  --urlbar-width: 60rem !important;
+  --urlbar-width: 60em !important;
 }
 
 #urlbar-container{

@@ -11,6 +11,7 @@ fi
 source "${ZINIT_HOME}/zinit.zsh"
 
 export PATH="$PATH:$HOME/.local/bin/"
+export PATH=$PATH:/usr/local/go/bin
 eval "$(oh-my-posh init zsh --config ~/.config/omp/zen.toml)"
 
 # Add in zsh plugins
