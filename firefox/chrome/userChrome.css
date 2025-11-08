@@ -51,7 +51,7 @@ body{
 .urlbar-input-container{
   border-radius: calc(var(--urlbar-container-height) / 2) !important;
   overflow: hidden !important;
-  --urlbar-width: 60em !important;
+  --urlbar-width: 50% !important;
 }
 
 #urlbar-container{
