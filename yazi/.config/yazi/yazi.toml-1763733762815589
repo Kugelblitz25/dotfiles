@@ -1,0 +1,5 @@
+[opener]
+edit = [{ run = "nvim '$1'", block = true, desc = "Edit with Neovim" }]
+
+[manager]
+enter_opener = "edit"

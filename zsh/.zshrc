@@ -13,6 +13,8 @@ source "${ZINIT_HOME}/zinit.zsh"
 export PATH="$PATH:$HOME/.local/bin/"
 export PATH=$PATH:/usr/local/go/bin
 eval "$(oh-my-posh init zsh --config ~/.config/omp/zen.toml)"
+eval "$(zoxide init zsh)"
+
 
 # Add in zsh plugins
 zinit light zsh-users/zsh-syntax-highlighting
@@ -73,9 +75,10 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 alias wc='cd /mnt/c/Users/'
+alias cd='z'
 alias ct='eza --tree --color=always --icons=always --level=3 --git-ignore --git'
 alias cat="batcat --theme Dracula --color always"
-alias ovpn="sudo openvpn --config IITBADV.ovpn > /dev/null"
+alias ovpn="sudo openvpn --config ~/IITBADV.ovpn > /dev/null"
 alias ovpn-kill="sudo pkill openvpn"
 
 # Customize fzf options
