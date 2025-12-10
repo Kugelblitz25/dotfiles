@@ -176,3 +176,5 @@ export PATH="$PATH:/opt/nvim-linux64/bin"
 # Created by `pipx` on 2024-11-24 06:45:07
 export PATH="$PATH:/home/kugelblitz/.local/bin"
 neofetch --ascii_distro Debian --disable resolution wm icons gpu packages --cpu_temp C
+
+. "$HOME/.local/bin/env"
