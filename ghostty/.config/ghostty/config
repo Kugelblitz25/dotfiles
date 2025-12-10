@@ -1,0 +1,12 @@
+theme = TokyoNight Moon
+font-family = JetBrains Mono Nerd Font
+font-size = 14
+window-width = 100
+window-height = 30
+window-padding-x = 8
+window-padding-y = 0,2
+background-opacity = 0.8
+gtk-titlebar = false
+keybind=ctrl+v=paste_from_clipboard
+# custom-shader = /home/chris/bloom.glsl
+#custom-shader = /home/chris/crt.glsl
