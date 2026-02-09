@@ -101,4 +101,3 @@ alias fvim='nvim $(ff | fzf --preview="batcat --theme Dracula --color always {}"
 
 
 . "$HOME/.local/bin/env"
-tarts pipes

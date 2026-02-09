@@ -3,7 +3,7 @@ return {
   config = function()
     require("rayso").setup({
       base_url = "https://ray.so/", -- Ray.so URL
-      open_cmd = "wslview", -- Which browser to use for opening uploads
+      open_cmd = "firefox", -- Which browser to use for opening uploads
       options = {
         background = true, -- Screenshot with background
         dark_mode = true, -- Use dark mode
