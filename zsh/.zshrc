@@ -101,3 +101,5 @@ alias fvim='nvim $(ff | fzf --preview="batcat --theme Dracula --color always {}"
 
 
 . "$HOME/.local/bin/env"
+
+figlet -f mono12 "Welcome" | lolcat -a -d 2 -F 0.3

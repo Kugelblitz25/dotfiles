@@ -7,8 +7,9 @@
   pointer-events: auto !important;
   height: 100% !important;
   border-radius: 1em 0 0 1em !important;
-  background: inherit !important;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1) !important;
+  background-color: var(--toolbox-bgcolor) !important;
+  backdrop-filter: blur(8px) !important;
   border-left: 1px solid rgba(255, 255, 255, 0.3) !important;
   min-width: 2px !important;
   max-width: 2px !important;
@@ -20,12 +21,13 @@
   }
 }
 
-.wrapper{
+#sidebar-main .wrapper{
   width: inherit !important;
 }
 
 /* Show sidebar on hover */
-#sidebar-main:hover {
+#sidebar-main:hover, 
+#sidebar-main:focus {
   width: 20vw !important;     
   min-width: 20vw !important;
   max-width: 75vw !important;
@@ -38,12 +40,23 @@
 }
 
 
-#nav-bar {
-  border-radius: 1rem 1rem 0 0 !important;
-}
-
 body{
   border-radius: 1rem !important;
+}
+
+toolbox {
+  position: relative !important;
+  opacity: 0;
+  --toolbar-height: 0px;
+  height: var(--toolbar-height) !important;
+  overflow: visible !important;
+  transition: opacity 0.2s ease, height 0.2s ease-in-out !important;
+}
+
+toolbox:hover,
+toolbox:focus {
+  opacity: 1;
+  --toolbar-height: auto;
 }
 
 #urlbar,
@@ -54,8 +67,25 @@ body{
   --urlbar-width: 50% !important;
 }
 
-#urlbar-container{
+#urlbar{
+  position: fixed !important;
+  top: calc(var(--urlbar-container-padding) * 5) !important;
+  --offset: calc(var(--urlbar-width) / 2) !important;
+  left: calc(50% - var(--offset)) !important;
   justify-content: center !important;
+  height: var(--toolbar-height) !important;
+  min-height: 0px !important;
+}
+
+#urlbar:after {
+  content: "" !important;
+  position: fixed !important;
+  top: var(--toolbar-height) !important;
+  left: 0 !important;
+  justify-content: center !important;
+  height: 1rem !important;
+  width: 100% !important;
+  min-height: 0px !important;
 }
 
 .urlbar-input{
@@ -65,3 +95,74 @@ body{
 #identity-box{
   display: none !important;
 }
+
+
+findbar {
+  /* detach from bottom, float centered over content */
+  position: fixed !important;
+  bottom: unset !important;
+  top: 20px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+ 
+  /* sizing: tries to match content width, falls back gracefully */
+  width: max(320px, 60vw) !important;
+/*   max-width: 90vw !important; */
+ 
+  /* toolbar colors */
+  background-color: var(--toolbar-bgcolor, #2b2a33) !important;
+  color: var(--toolbar-color, #fbfbfe) !important;
+  border: 1px solid var(--toolbarseparator-color, rgba(255,255,255,0.15)) !important;
+ 
+  /* float appearance */
+  border-radius: 8px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45) !important;
+  padding: 6px 10px !important;
+  z-index: 9999 !important;
+ 
+  /* smooth open/close */
+  transition: opacity 0.15s ease, transform 0.15s ease !important;
+}
+
+findbar[hidden] {
+  opacity: 0 !important;
+  transform: translateX(-50%) translateY(-8px) !important;
+}
+
+ 
+/* input field */
+findbar-textbox{
+  background-color: var(--input-bgcolor, rgba(255,255,255,0.08)) !important;
+  color: var(--toolbar-color, #fbfbfe) !important;
+  border: 1px solid var(--toolbarseparator-color, rgba(255,255,255,0.2)) !important;
+  border-radius: 4px !important;
+}
+ 
+findbar-textbox:focus {
+  border-color: var(--focus-outline-color, #0df) !important;
+  outline: none !important;
+}
+ 
+/* match count label */
+findbar-find-status,
+findbar-match-case-status {
+  color: var(--toolbar-color, #fbfbfe) !important;
+  opacity: 0.7 !important;
+}
+ 
+/* buttons */
+findbar-button {
+  background-color: transparent !important;
+  color: var(--toolbar-color, #fbfbfe) !important;
+  border-radius: 4px !important;
+}
+ 
+findbar-button:hover {
+  background-color: var(--toolbarbutton-hover-background, rgba(255,255,255,0.12)) !important;
+}
+ 
+findbar-button:active {
+  background-color: var(--toolbarbutton-active-background, rgba(255,255,255,0.2)) !important;
+}
+
+ 
